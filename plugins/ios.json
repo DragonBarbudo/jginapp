@@ -1,0 +1,28 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "com.paypal.cordova.mobilesdk": {
+            "PACKAGE_NAME": "io.cordova.hellocordova"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "io.cordova.hellocordova"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "io.cordova.hellocordova"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "io.cordova.hellocordova"
+        },
+        "cordova-plugin-googleplus": {
+            "REVERSED_CLIENT_ID": "com.googleusercontent.apps.915521842130-j3h7fd3089qpkhp1jd9sf5643abj1nug",
+            "PACKAGE_NAME": "com.jagergin.app"
+        }
+    },
+    "dependent_plugins": {}
+}
