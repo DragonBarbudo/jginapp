@@ -44,8 +44,8 @@
             <ons-col width="70px">
               <div class="thumb"><img ng-src="http://jagergin.com/cms/api/imageFiles/{{prod.refId}}.jpg" alt=""/></div>
             </ons-col>
-            <ons-col><span class="hide">{{orderName = prod.name.replace('[1]','')}} {{orderName = orderName.replace('[2]','')}}</span>
-              <div class="name">{{ orderName }}</div>
+            <ons-col>
+              <div class="name">{{ clean( prod.name ) }}</div>
               <div class="description">{{prod.description}}</div>
               <div class="price"><span class="qtyTxt">{{prod.quantity}}x  </span><span>{{prod.new_price * prod.quantity | currency}}</span></div>
             </ons-col>
@@ -75,8 +75,8 @@
   <ons-row ng-show="grid" class="productsGrid">
     <ons-col ng-repeat="prod in products | orderBy:'name'" width="46%" class="product">
       <ons-row>
-        <div class="bigthumb"><img ng-src="http://jagergin.com/cms/api/imageFiles/{{prod.refId}}.jpg" alt=""/></div><span class="hide">{{orderName = prod.name.replace('[1]','')}} {{orderName = orderName.replace('[2]','')}}</span>
-        <div class="name">{{ orderName }}</div>
+        <div class="bigthumb"><img ng-src="http://jagergin.com/cms/api/imageFiles/{{prod.refId}}.jpg" alt=""/></div>
+        <div class="name">{{ clean( prod.name ) }}</div>
         <ons-row>
           <ons-col>
             <div class="description">{{prod.description}}</div>

@@ -37,6 +37,7 @@ moduleapp.controller('CarritoCtrl', function ($scope, ShoppingCartSvc, SettingSv
     function updateCart(){
   		$scope.cartItems = ShoppingCartSvc.getCart();
       getTotalAmount();
+      localStorageService.set('cart',ShoppingCartSvc.getCart());
   	}
 
     function getTotalAmount(){
@@ -99,5 +100,11 @@ moduleapp.controller('CarritoCtrl', function ($scope, ShoppingCartSvc, SettingSv
         $rootScope.retorno = true;
         menu.setMainPage('app/view/cuenta.html');
       }
+
+
+      $scope.clean = function(str){
+    str = str.replace( /\[(.+?)\]/g , '' );
+    return str;
+  }
 
 });

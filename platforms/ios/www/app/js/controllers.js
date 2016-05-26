@@ -51,7 +51,10 @@ moduleapp.controller('PortadaCtrl', function($scope, CategoriesSvc, ShoppingCart
 
 
 
-  console.log('running');
+$scope.clean = function(str){
+    str = str.replace( /\[(.+?)\]/g , '' );
+    return str;
+  }
 
 
 if(!$rootScope.zona){
@@ -147,6 +150,8 @@ moduleapp.controller('ProductosCtrl', function ($scope, ShoppingCartSvc, Setting
 
   $scope.addToCart = function(theItem){
     ShoppingCartSvc.addItem(theItem);
+    localStorageService.set('cart',ShoppingCartSvc.getCart());
+
   }
 
 
@@ -173,6 +178,11 @@ moduleapp.controller('ProductosCtrl', function ($scope, ShoppingCartSvc, Setting
     return lowCase;
   }
 
+
+  $scope.clean = function(str){
+    str = str.replace( /\[(.+?)\]/g , '' );
+    return str;
+  }
 
 
 });
@@ -228,6 +238,7 @@ moduleapp.controller('BusquedaCtrl', function ($scope, ShoppingCartSvc, SettingS
 
   $scope.addToCart = function(theItem){
     ShoppingCartSvc.addItem(theItem);
+    localStorageService.set('cart',ShoppingCartSvc.getCart());
   }
 
 
@@ -244,6 +255,11 @@ moduleapp.controller('BusquedaCtrl', function ($scope, ShoppingCartSvc, SettingS
         $scope.cartCount = ShoppingCartSvc.count();
     }, true);
 
+
+    $scope.clean = function(str){
+    str = str.replace( /\[(.+?)\]/g , '' );
+    return str;
+  }
 
 });
 
@@ -374,24 +390,7 @@ $scope.$watch(function () {
     console.log('loginSo');
 
   if(network=='google'){
-    /*
-    window.plugins.googleplus.login(
-        {},
-        function (obj) {
-          console.log( JSON.stringify(obj) ); // do something useful instead of alerting
-          var user = {};
-          user.id = obj.userId;
-          user.name = obj.displayName;
-          user.email = obj.email;
-          user.network = 'google';
-          loginNetwork(user);
-        },
-        function (msg) {
-          console.log('error: ' + msg);
-          alert('Error al iniciar sesión. Intente de nuevo.');
-        }
-    );
-    */
+
     $cordovaOauth.google('473012819-cv5rgbmt6tjf8h4b8h2go7a4f89q9g6r.apps.googleusercontent.com', ["email"]).then(function(result) {
       console.log(result);
       var token = result.access_token;
@@ -401,8 +400,8 @@ $scope.$watch(function () {
         user.id = resultME.data.id;
         user.name = resultME.data.name;
         user.email = resultME.data.email;
-        user.network = 'google';
-        loginNetwork(user);
+        user.picture = resultME.data.picture;
+        loginNetwork(user, network);
       }, function(error) {
           alert("Ocurrió un problema con tu perfil. Intentalo de nuevo.");
           console.log(error);
@@ -421,9 +420,12 @@ $scope.$watch(function () {
             var token = result.access_token;
             $http.get("https://graph.facebook.com/v2.2/me", { params: { access_token: token, fields: "id,name,email,picture", format: "json" }}).then(function(resultME) {
               console.log(resultME.data);
-              var user = resultME.data;
-              user.network = 'facebook';
-              loginNetwork(user);
+              var user = {};
+              user.id = resultME.data.id;
+              user.name = resultME.data.name;
+              user.email = resultME.data.email;
+              user.picture = resultME.data.picture.data.url;
+              loginNetwork(user, network);
             }, function(error) {
                 alert("Ocurrió un problema con tu perfil. Intentalo de nuevo.");
                 console.log(error);
@@ -441,8 +443,7 @@ $scope.$watch(function () {
 
 
 
-  function loginNetwork(r){
-    console.log('loginNetwork()');
+  function loginNetwork(r, network){
     console.log(r);
     //Validate Client_id
     UsersSvc.searchClientId(r.id).then(function(resultC){
@@ -453,6 +454,7 @@ $scope.$watch(function () {
         $rootScope.loggedin = true;
         cargarHistorial();
         loginRetorno();
+        localStorageService.set('user', $rootScope.userApp);
       } else {
         //Exists:FALSE | Check if previous email
         console.log('Client ID null. Searching by Email');
@@ -462,7 +464,7 @@ $scope.$watch(function () {
               console.log('Client Email Exists. Updating with Network & Signing In');
               console.log(resultE.data.name);
               $rootScope.userApp = resultE.data;
-              $rootScope.userApp.network= r.network;
+              $rootScope.userApp.network= network;
               $rootScope.userApp.access_token= ' - ';
               $rootScope.userApp.client_id= r.id;
               $rootScope.loggedin = true;
@@ -471,6 +473,7 @@ $scope.$watch(function () {
               //console.log($rootScope.userApp);
               UsersSvc.updateUser($rootScope.userApp, $rootScope.userApp.id).then(function(updatedResult){
                 console.log(updatedResult);
+                localStorageService.set('user', $rootScope.userApp);
               });
 
           } else {
@@ -480,16 +483,32 @@ $scope.$watch(function () {
             $scope.newUser.name = r.name;
             $scope.newUser.lastname = r.last_name;
             $scope.newUser.email = r.email;
-            $scope.newUser.network= r.network;
+            $scope.newUser.network= network;
             $scope.newUser.access_token= ' - ';
             $scope.newUser.client_id= r.id;
             UsersSvc.createUser($scope.newUser).then(function(result){
               if(result.data){
-                $rootScope.loggedin = true;
                 $rootScope.userApp = $scope.newUser;
                 $rootScope.userApp.id = result.data;
-                cargarHistorial();
-                loginRetorno();
+
+                var picture = r.picture;
+                if(network == 'facebook'){ picture = picture+"&width=300";  }
+                if(network == 'google'){ picture = picture+"?sz=300"; }
+
+                UsersSvc.remoteImage(picture, $rootScope.userApp.id).then(function(imageResult){
+                  console.log(imageResult);
+                  $rootScope.loggedin = true;
+                  if($scope.regreso){$state.go('carrito');}
+                  $scope.reloadparam = Math.random();
+                  localStorageService.set('user', $rootScope.userApp);
+                  cargarHistorial();
+                  loginRetorno();
+
+
+                });
+
+
+
               }
             });
           } // ends signup with network

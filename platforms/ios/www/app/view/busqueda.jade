@@ -20,8 +20,7 @@ ons-page(ng-controller="BusquedaCtrl")
           ons-row
             ons-col(width="70px"): .thumb: img(ng-src="http://jagergin.com/cms/api/imageFiles/{{prod.refId}}.jpg", alt="")
             ons-col
-              span.hide {{orderName = prod.name.replace('[1]','')}} {{orderName = orderName.replace('[2]','')}}
-              .name {{ orderName }}
+              .name {{ clean( prod.name ) }}
               .description {{prod.description}} | {{ prod.categoryName }}
               .price 
                 span.qtyTxt {{prod.quantity}}x  

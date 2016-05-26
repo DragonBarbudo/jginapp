@@ -139,6 +139,22 @@ moduleapp.factory("ProductsSvc", function($q, $http, SettingSvc){
 	        });
 			return deferred.promise;
 		}
+
+
+		function remoteImage(imageUrl, id){
+			var deferred = $q.defer();
+			$http({
+							method: "POST",
+							url: SettingSvc.getRootUrl() + "/v1/user_remote_image/"+id,
+							data: imageUrl,
+							headers: {'Content-Type': undefined}
+					}).then(function (result) {
+							deferred.resolve(result);
+					});
+			return deferred.promise;
+		}
+
+
 		function uploadImage(fd){
 			var deferred = $q.defer();
 			$http({
@@ -151,17 +167,11 @@ moduleapp.factory("ProductsSvc", function($q, $http, SettingSvc){
 	        });
 			return deferred.promise;
 		}
-		function removeImage(url){
-			var deferred = $q.defer();
-			$http({
-	            method: "GET",
-	            url: SettingSvc.getRootUrl() + "/v1/product_remove_image/" + url,
-	            headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
-        	}).then(function (result) {
-	            deferred.resolve(result);
-	        });
-			return deferred.promise;
-		}
+
+
+
+
+
 		return {
 		    create : create,
 		    findById : findById,
@@ -172,8 +182,8 @@ moduleapp.factory("ProductsSvc", function($q, $http, SettingSvc){
 		    update : update,
 		    count : count,
 		    uploadImage : uploadImage,
-		    removeImage : removeImage
-		};
+				remoteImage : remoteImage
+		}
 	});
 
 

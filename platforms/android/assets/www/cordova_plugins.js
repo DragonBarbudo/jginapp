@@ -36,13 +36,6 @@ module.exports = [
         "id": "cordova-plugin-whitelist.whitelist",
         "pluginId": "cordova-plugin-whitelist",
         "runs": true
-    },
-    {
-        "file": "plugins/cordova-plugin-googleplus/www/GooglePlus.js",
-        "id": "cordova-plugin-googleplus.GooglePlus",
-        "clobbers": [
-            "window.plugins.googleplus"
-        ]
     }
 ];
 module.exports.metadata = 

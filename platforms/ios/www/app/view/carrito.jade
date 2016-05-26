@@ -30,8 +30,7 @@ ons-page(ng-controller="CarritoCtrl").Cart
                   ons-col
                     ons-row
                       ons-col.infoPrd
-                        span.hide {{orderName = prod.name.replace('[1]','')}} {{orderName = orderName.replace('[2]','')}}
-                        .name {{ orderName }}
+                        .name {{ clean( prod.name ) }}
                         .description {{prod.description}}
                     ons-row
                       ons-col.qty

@@ -24,14 +24,6 @@ module.exports = [
         "merges": [
             ""
         ]
-    },
-    {
-        "file": "plugins/cordova-plugin-googleplus/www/GooglePlus.js",
-        "id": "cordova-plugin-googleplus.GooglePlus",
-        "pluginId": "cordova-plugin-googleplus",
-        "clobbers": [
-            "window.plugins.googleplus"
-        ]
     }
 ];
 module.exports.metadata = 
@@ -40,8 +32,7 @@ module.exports.metadata =
     "cordova-plugin-geolocation": "2.1.0",
     "cordova-plugin-whitelist": "1.2.1",
     "com.paypal.cordova.mobilesdk": "3.1.25",
-    "cordova-plugin-inappbrowser": "1.3.0",
-    "cordova-plugin-googleplus": "4.0.9"
+    "cordova-plugin-inappbrowser": "1.3.0"
 }
 // BOTTOM OF METADATA
 });

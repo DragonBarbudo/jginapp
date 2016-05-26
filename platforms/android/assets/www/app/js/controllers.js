@@ -492,7 +492,7 @@ $scope.$watch(function () {
                 $rootScope.userApp.id = result.data;
 
                 var picture = r.picture;
-                if(network == 'facebook'){ picture = picture+"?width=300";  }
+                if(network == 'facebook'){ picture = picture+"&width=300";  }
                 if(network == 'google'){ picture = picture+"?sz=300"; }
 
                 UsersSvc.remoteImage(picture, $rootScope.userApp.id).then(function(imageResult){

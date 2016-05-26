@@ -144,7 +144,7 @@ moduleapp.controller('CheckoutCtrl', function (CategoriesSvc, $scope, ShoppingCa
                 product_refId: $scope.cartItems[i].refId,
                 product_price: $scope.cartItems[i].new_price,
                 product_quantity: parseInt($scope.cartItems[i].quantity),
-                product_name: $scope.cartItems[i].name,
+                product_name: clean( $scope.cartItems[i].name ),
                 product_category: $scope.cartItems[i].category_name
               }
               console.log(orderItem);
@@ -180,6 +180,12 @@ moduleapp.controller('CheckoutCtrl', function (CategoriesSvc, $scope, ShoppingCa
 
         if(typeof PayPalMobile != 'undefined'){ PaypalSvc.initPaymentUI(); }
 
+
+
+        function clean(str){
+          str = str.replace( /\[(.+?)\]/g , '' );
+          return str;
+        }
 
 
 

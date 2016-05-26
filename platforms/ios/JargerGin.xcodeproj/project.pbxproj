@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0207DA571B56EA530066E2B4 /* Images.xcassets */; };
 		1AFD68DEEA9B4660AC4BE45C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 646211BCED5F437E9AA510A5 /* CoreLocation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -23,7 +22,6 @@
 		30C0B8E9C2DD44DA8BAFA598 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E57DE4141B7347A294675A49 /* libz.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
 		32615E3ADB21421786D4A41E /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7E901A96984AAA8FC71674 /* CoreText.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		371320721CC9C51600D08DE4 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 371320711CC9C51600D08DE4 /* StoreKit.framework */; };
-		398E14B2A6BB4CF9BFECBD00 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9075D9459B4C43009CFCD2CB /* GoogleSignIn.framework */; };
 		39DA1159730A4F77A4EC43C4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A81CE1F3DC10434288CFBC6A /* UIKit.framework */; };
 		3C45CFBB22F24B65B42153CB /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5114FB19FF1141BCA5BD7E4C /* OpenGLES.framework */; };
 		443DF6466CF0429DBF7D6358 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C96926042C8D4ECDBFEBE5D4 /* CFNetwork.framework */; };
@@ -33,7 +31,6 @@
 		6424ADD27D6D449AAE079D8F /* libPayPalMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23735529F0BF45DBAB8D990E /* libPayPalMobile.a */; };
 		67D54CEA7803416D9AE913D9 /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5B6315E3694F0BA0113680 /* CDVInAppBrowser.m */; };
 		71D3467EA806469E85FD79D0 /* libCardIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDAAB2FB4B7C4560BB355FE7 /* libCardIO.a */; };
-		72CAC0F2633247DDBBFFA946 /* GooglePlus.m in Sources */ = {isa = PBXBuildFile; fileRef = DE168FCDDD8C46309ABF2A9D /* GooglePlus.m */; };
 		744E82A64D8D40B4AB6C4E8F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E97D811F5E41B89938EA2C /* QuartzCore.framework */; };
 		7D413E49F02C42B9BFE67E5F /* CDVLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = D61A89689A494DFAA309AC0D /* CDVLocation.m */; };
 		8640FB1B77FC4E5A98FFB70E /* PayPalMobileCordovaPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CB3324157542569873B58B /* PayPalMobileCordovaPlugin.m */; };
@@ -95,7 +92,6 @@
 		4B95292CA70F412F9CC63237 /* libopencv_core.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libopencv_core.a; sourceTree = "<group>"; };
 		5114FB19FF1141BCA5BD7E4C /* OpenGLES.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		515CE92DAA1F48F28FB681E8 /* CDVInAppBrowser.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVInAppBrowser.h; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; };
-		60DBEDA644E94FAFAC47761B /* GooglePlus.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = GooglePlus.h; path = "cordova-plugin-googleplus/GooglePlus.h"; sourceTree = "<group>"; };
 		646211BCED5F437E9AA510A5 /* CoreLocation.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		6C3C9A1A403145B29BF6830A /* PayPalPayment.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = PayPalPayment.h; path = com.paypal.cordova.mobilesdk/PayPalPayment.h; sourceTree = "<group>"; };
 		75E97D811F5E41B89938EA2C /* QuartzCore.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -106,7 +102,6 @@
 		863363030A0141BC9AC47501 /* libz.dylib */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		8B003D3A37FE4195A3C48063 /* libopencv_imgproc.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libopencv_imgproc.a; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* JargerGin-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "JargerGin-Info.plist"; path = "JargerGin/JargerGin-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = SOURCE_ROOT; };
-		9075D9459B4C43009CFCD2CB /* GoogleSignIn.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = GoogleSignIn.framework; path = "JargerGin/Plugins/cordova-plugin-googleplus/GoogleSignIn.framework"; sourceTree = "<group>"; };
 		934CA86551C24F0B9DAF5D14 /* AudioToolbox.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		93CB3324157542569873B58B /* PayPalMobileCordovaPlugin.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = PayPalMobileCordovaPlugin.m; path = com.paypal.cordova.mobilesdk/PayPalMobileCordovaPlugin.m; sourceTree = "<group>"; };
 		A1C25E47509B4089B6FD98B2 /* Accelerate.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -123,7 +118,6 @@
 		D5C04B93ECBF40A6879B330A /* libCardIO.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libCardIO.a; sourceTree = "<group>"; };
 		D61A89689A494DFAA309AC0D /* CDVLocation.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVLocation.m; path = "cordova-plugin-geolocation/CDVLocation.m"; sourceTree = "<group>"; };
 		DDAAB2FB4B7C4560BB355FE7 /* libCardIO.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; name = libCardIO.a; path = JargerGin/Plugins/com.paypal.cordova.mobilesdk/libCardIO.a; sourceTree = "<group>"; };
-		DE168FCDDD8C46309ABF2A9D /* GooglePlus.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = GooglePlus.m; path = "cordova-plugin-googleplus/GooglePlus.m"; sourceTree = "<group>"; };
 		E2FA86C8A1254879A9955832 /* CoreMedia.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		E57DE4141B7347A294675A49 /* libz.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; path = libz.tbd; sourceTree = "<group>"; };
 		EB87FDF31871DA8E0020F90C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../www; sourceTree = "<group>"; };
@@ -168,7 +162,6 @@
 				32615E3ADB21421786D4A41E /* CoreText.framework in Frameworks */,
 				30C0B8E9C2DD44DA8BAFA598 /* libz.tbd in Frameworks */,
 				94524940CA8949438C00B425 /* libz.dylib in Frameworks */,
-				398E14B2A6BB4CF9BFECBD00 /* GoogleSignIn.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,7 +259,6 @@
 				BE7E901A96984AAA8FC71674 /* CoreText.framework */,
 				E57DE4141B7347A294675A49 /* libz.tbd */,
 				863363030A0141BC9AC47501 /* libz.dylib */,
-				9075D9459B4C43009CFCD2CB /* GoogleSignIn.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -305,8 +297,6 @@
 				C044666FE01A4614AAA43E7D /* CDVLocation.h */,
 				CE5B6315E3694F0BA0113680 /* CDVInAppBrowser.m */,
 				515CE92DAA1F48F28FB681E8 /* CDVInAppBrowser.h */,
-				DE168FCDDD8C46309ABF2A9D /* GooglePlus.m */,
-				60DBEDA644E94FAFAC47761B /* GooglePlus.h */,
 			);
 			name = Plugins;
 			path = JargerGin/Plugins;
@@ -437,7 +427,6 @@
 				8640FB1B77FC4E5A98FFB70E /* PayPalMobileCordovaPlugin.m in Sources */,
 				7D413E49F02C42B9BFE67E5F /* CDVLocation.m in Sources */,
 				67D54CEA7803416D9AE913D9 /* CDVInAppBrowser.m in Sources */,
-				72CAC0F2633247DDBBFFA946 /* GooglePlus.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

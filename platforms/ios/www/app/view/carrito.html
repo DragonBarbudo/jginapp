@@ -43,8 +43,8 @@
                   </ons-col>
                   <ons-col>
                     <ons-row>
-                      <ons-col class="infoPrd"><span class="hide">{{orderName = prod.name.replace('[1]','')}} {{orderName = orderName.replace('[2]','')}}</span>
-                        <div class="name">{{ orderName }}</div>
+                      <ons-col class="infoPrd">
+                        <div class="name">{{ clean( prod.name ) }}</div>
                         <div class="description">{{prod.description}}</div>
                       </ons-col>
                     </ons-row>
