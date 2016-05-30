@@ -212,7 +212,7 @@ moduleapp.controller('CheckoutCtrl', function (CategoriesSvc, $scope, ShoppingCa
     ons.createDialog('editProfile.html').then(function(dialog){
       dialog.show();
     });
-}
+  }
 
 
 

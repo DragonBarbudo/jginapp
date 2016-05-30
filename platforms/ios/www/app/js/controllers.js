@@ -454,7 +454,6 @@ $scope.$watch(function () {
   };
 
 
-
   function loginNetwork(r, network){
     console.log(r);
     //Validate Client_id
