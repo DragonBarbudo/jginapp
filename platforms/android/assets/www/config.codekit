@@ -427,6 +427,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/app\/img\/pin.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 38553,
+		"inputAbbreviatedPath": "\/app\/img\/pin.png",
+		"outputAbbreviatedPath": "\/app\/img\/pin.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/app\/img\/profile.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -951,15 +962,6 @@
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0
 		},
-	"\/app\/view\/busqueda.html": {
-		"fileType": 8192,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/app\/view\/busqueda.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
 	"\/app\/view\/busqueda.jade": {
 		"compileDebug": 1,
 		"fileType": 512,
@@ -1223,7 +1225,7 @@
 	},
 "hooks": [
 	],
-"lastSavedByUser": "Albin Rdz",
+"lastSavedByUser": "ealbinu",
 "manualImportLinks": {
 	},
 "projectAttributes": {

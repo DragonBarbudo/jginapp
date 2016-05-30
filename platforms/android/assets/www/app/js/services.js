@@ -23,8 +23,8 @@ moduleapp.factory("StoreLocalSvc", function(){
 
 			"viewsUrl" : "app/app-pages",
 
-			"payPalSandbox" : "AUxqVMZowyo0RVcziMQU5vTAT4otucvliQH0ur0RIqB0mNkx8n_KDCDdTxxnj1SIeu9_VuHc7Yphr9W_",
-			"payPalProduction" : "ATyaG-oUZ2v3W8Oopdlp5TOIQZWlSeaOxcnmZxfXr3qIzwiX9ByylQMSIHWVuZroSuXDHo4Wrtyo1KcU"
+			"payPalSandbox" : "AaNAb3q2ipAiLfJBiMcSTZ-cQWA_PvxhkmxhBqoZQ2z5Mys6qj9tB_euGd20tSRco2QfOkLkLVwO61Je",
+			"payPalProduction" : "AYqK95EuSPivywD5MmpASfTf-2nTMW9ExnunOde9jqQJWQo2UJH2WFOPcdb1tvz5lF_3-Z1Gq041adiB"
 		}
 		return setting;
 	}
@@ -139,22 +139,6 @@ moduleapp.factory("ProductsSvc", function($q, $http, SettingSvc){
 	        });
 			return deferred.promise;
 		}
-
-
-		function remoteImage(imageUrl, id){
-			var deferred = $q.defer();
-			$http({
-							method: "POST",
-							url: SettingSvc.getRootUrl() + "/v1/user_remote_image/"+id,
-							data: imageUrl,
-							headers: {'Content-Type': undefined}
-					}).then(function (result) {
-							deferred.resolve(result);
-					});
-			return deferred.promise;
-		}
-
-
 		function uploadImage(fd){
 			var deferred = $q.defer();
 			$http({
@@ -167,11 +151,17 @@ moduleapp.factory("ProductsSvc", function($q, $http, SettingSvc){
 	        });
 			return deferred.promise;
 		}
-
-
-
-
-
+		function removeImage(url){
+			var deferred = $q.defer();
+			$http({
+	            method: "GET",
+	            url: SettingSvc.getRootUrl() + "/v1/product_remove_image/" + url,
+	            headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+        	}).then(function (result) {
+	            deferred.resolve(result);
+	        });
+			return deferred.promise;
+		}
 		return {
 		    create : create,
 		    findById : findById,
@@ -182,8 +172,8 @@ moduleapp.factory("ProductsSvc", function($q, $http, SettingSvc){
 		    update : update,
 		    count : count,
 		    uploadImage : uploadImage,
-				remoteImage : remoteImage
-		}
+		    removeImage : removeImage
+		};
 	});
 
 
@@ -294,6 +284,9 @@ moduleapp.factory("ShoppingCartSvc", function($window, $cookieStore){
 		function getCart(){
 			return cartItems;
 		}
+		function setCart(items){
+			cartItems = items;
+		}
 		function removeItem(item){
 			for(var i = 0; i < cartItems.length; i++){
 				if(cartItems[i].id == item.id && cartItems[i].spec_value == item.spec_value){
@@ -316,6 +309,10 @@ moduleapp.factory("ShoppingCartSvc", function($window, $cookieStore){
 				}
 			}
 		}
+
+
+
+
 		function setQuantity(item, qty){
 			for(var i = 0; i < cartItems.length; i++){
 				if(cartItems[i].id == item.id){
@@ -346,7 +343,8 @@ moduleapp.factory("ShoppingCartSvc", function($window, $cookieStore){
 			count:count,
 			isExist:isExist,
 			clear: clear,
-			setQuantity : setQuantity
+			setQuantity : setQuantity,
+			setCart : setCart
 		};
 	});
 
@@ -372,7 +370,7 @@ moduleapp.factory("ShoppingCartSvc", function($window, $cookieStore){
 	     return config;
 	   }
 	   function onPayPalMobileInit() {
-	     PayPalMobile.prepareToRender("PayPalEnvironmentProduction", configuration());
+	     PayPalMobile.prepareToRender("PayPalEnvironmentSandbox", configuration());
 	   }
 	   function onUserCanceled(result) {
 	     console.log(result);
@@ -469,6 +467,7 @@ moduleapp.factory("UsersSvc", function($q, $http, SettingSvc){
 			return deferred.promise;
 	}
 
+
 	function uploadImage(fd){
 			var deferred = $q.defer();
 			$http({
@@ -482,6 +481,19 @@ moduleapp.factory("UsersSvc", function($q, $http, SettingSvc){
 			return deferred.promise;
 		}
 
+	function remoteImage( imageUrl, id ){
+		var deferred = $q.defer();
+		$http({
+						method: "POST",
+						url: SettingSvc.getRootUrl() + "/v1/user_remote_image/"+id,
+						data: imageUrl,
+						headers: {'Content-Type': undefined}
+				}).then(function (result) {
+						deferred.resolve(result);
+				});
+		return deferred.promise;
+	}
+
 	return{
 		listUsers: listUsers,
 		createUser: createUser,
@@ -489,7 +501,8 @@ moduleapp.factory("UsersSvc", function($q, $http, SettingSvc){
 		loginUser: loginUser,
 		updateUser: updateUser,
 		searchClientId: searchClientId,
-		uploadImage	: uploadImage
+		uploadImage : uploadImage,
+		remoteImage : remoteImage
 	}
 
 });

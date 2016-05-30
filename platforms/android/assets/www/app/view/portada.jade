@@ -31,9 +31,9 @@ ons-navigator(var="Navigator")
             img(ng-src="app/img/icon_marker.png")
             span(ng-show="isInZone") Estas en la zona JagerGin
             span(ng-hide="isInZone") No estas en la zona JagerGin
-          //.notesAboutZonaJagergin
-            .zona
-            span Zona JagerGin
+          .notesAboutZonaJagergin(ng-click="returnToInit()")
+            ons-icon.zona(icon="ion-location")
+            span Ir a mi ubicación
           ui-gmap-google-map(control="map.control", options="map.options", center='map.center', zoom='map.zoom', events="map.events")
             ui-gmap-polygon(ng-repeat="p in polygons track by p.id", path="p.path", stroke="p.stroke", fill="p.fill")
             ui-gmap-marker(ng-repeat="m in marker track by m.id", coords="m.coords", options="m.options", idkey="m.id")

@@ -78,7 +78,8 @@
           <div ng-click="editarPerfil()" class="profileEditBtn">
             <ons-icon icon="ion-edit"></ons-icon>
           </div>
-          <div class="profileImage"><img ng-src="{{url}}../profileImgs/id_{{userApp.id}}.jpg?v={{reloadparam}}" alt=""/></div>
+          <!--.profileImage: img(ng-src="{{url}}../profileImgs/id_{{userApp.id}}.jpg?v={{reloadparam}}", alt="")-->
+          <div style="background-image: url( {{url}}../profileImgs/id_{{userApp.id}}.jpg?v={{reloadparam}});" class="profileImage"></div>
           <div class="profileName">{{userApp.name}} {{userApp.lastname}}</div>
           <div class="profileMail">{{userApp.email}}</div>
           <div class="profileCel">{{userApp.tel}}</div>
@@ -146,6 +147,9 @@
       <hr/>
       <p>
         <input type="text" ng-model="userEdit.name" placeholder="Nombre" class="text-input"/>
+      </p>
+      <p>
+        <input type="text" ng-model="userEdit.lastname" placeholder="Apellido" class="text-input"/>
       </p>
       <p>
         <input type="email" ng-model="userEdit.email" placeholder="Correo electrónico" class="text-input"/>

@@ -72,7 +72,8 @@ ons-navigator(var="Navigator")
       ons-row.profile
         ons-col
           .profileEditBtn(ng-click="editarPerfil()"): ons-icon(icon="ion-edit")
-          .profileImage: img(ng-src="{{url}}../profileImgs/id_{{userApp.id}}.jpg?v={{reloadparam}}", alt="")
+          //.profileImage: img(ng-src="{{url}}../profileImgs/id_{{userApp.id}}.jpg?v={{reloadparam}}", alt="")
+          .profileImage(style="background-image: url( {{url}}../profileImgs/id_{{userApp.id}}.jpg?v={{reloadparam}});")
           .profileName {{userApp.name}} {{userApp.lastname}}
           .profileMail {{userApp.email}}
           .profileCel {{userApp.tel}}
@@ -112,6 +113,7 @@ ons-navigator(var="Navigator")
         |  Imagen de perfil
       hr
       p: input(type="text", ng-model="userEdit.name", placeholder="Nombre").text-input
+      p: input(type="text", ng-model="userEdit.lastname", placeholder="Apellido").text-input
       p: input(type="email", ng-model="userEdit.email", placeholder="Correo electrónico").text-input
       p: input(type="text", ng-model="userEdit.tel", placeholder="Teléfono móvil").text-input
       p
