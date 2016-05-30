@@ -427,6 +427,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/app\/img\/pin.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 38553,
+		"inputAbbreviatedPath": "\/app\/img\/pin.png",
+		"outputAbbreviatedPath": "\/app\/img\/pin.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/app\/img\/profile.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -1223,7 +1234,7 @@
 	},
 "hooks": [
 	],
-"lastSavedByUser": "Albin Rdz",
+"lastSavedByUser": "ealbinu",
 "manualImportLinks": {
 	},
 "projectAttributes": {

@@ -47,7 +47,7 @@ moduleapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
 });
 
 
-moduleapp.run(function($rootScope, localStorageService){
+moduleapp.run(function($rootScope, localStorageService, ShoppingCartSvc){
 
   //Esconder / Mostar Mapa
   $rootScope.zona = false;
@@ -65,6 +65,12 @@ moduleapp.run(function($rootScope, localStorageService){
   if(localStorageService.get('user')){
     $rootScope.userApp = localStorageService.get('user');
     $rootScope.loggedin = true;
+  }
+
+  //CART
+
+  if(localStorageService.get('cart')){
+    ShoppingCartSvc.setCart( localStorageService.get('cart') );
   }
 
 });

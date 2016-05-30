@@ -13,6 +13,7 @@ moduleapp.controller('CheckoutCtrl', function (CategoriesSvc, $scope, ShoppingCa
     $scope.address="";
     $scope.geocoder = new google.maps.Geocoder();
 
+    $scope.initposition = {};
 
     $scope.order = {
   		code: UtilsSvc.createRandomCode(),
@@ -30,8 +31,6 @@ moduleapp.controller('CheckoutCtrl', function (CategoriesSvc, $scope, ShoppingCa
   		total_amount : 0
   	}
 
-
-    console.log($scope.order.date_time);
 
     getTotalAmount();
 
@@ -51,6 +50,10 @@ moduleapp.controller('CheckoutCtrl', function (CategoriesSvc, $scope, ShoppingCa
   		}
     }
 
+    $scope.returnToInit = function(){
+      $scope.map.control.refresh( {latitude: $scope.initposition.lat, longitude: $scope.initposition.lng} );
+    }
+
     $scope.checkoutPosition;
 
 
@@ -59,7 +62,9 @@ moduleapp.controller('CheckoutCtrl', function (CategoriesSvc, $scope, ShoppingCa
     for(var i=0;i<zonaJagergin.todo.path.length; i++){  nupaths.path.push( {lat:zonaJagergin.todo.path[i].latitude, lng:zonaJagergin.todo.path[i].longitude } );  }
     var area = new google.maps.Polygon( {paths: nupaths.path });
     var geocoder = new google.maps.Geocoder();
+
     $cordovaGeolocation.getCurrentPosition(posOptions).then(function (data) {
+      $scope.initposition = {lat:data.coords.latitude, lng: data.coords.longitude };
       $scope.coords = { lat:data.coords.latitude, lng: data.coords.longitude };
       $scope.map.control.refresh( {latitude: $scope.coords.lat, longitude: $scope.coords.lng} );
       $scope.isInZone = area.containsLatLng(new google.maps.LatLng($scope.coords.lat, $scope.coords.lng));
@@ -68,7 +73,7 @@ moduleapp.controller('CheckoutCtrl', function (CategoriesSvc, $scope, ShoppingCa
     }); //ends geolocation
 
     uiGmapGoogleMapApi.then(function(maps) {
-    setTimeout(function(){ $('.Cart .gm-style').append('<div class="centerPin"><img src="app/img/icon_marker.png"></div>'); }, 1000);
+    setTimeout(function(){ $('.Cart .gm-style').append('<div class="centerPin"></div>'); }, 1000);
       $scope.coords = { lat:19.3981294, lng: -99.1203205 };
         $scope.map = {
           control : {},
@@ -97,6 +102,12 @@ moduleapp.controller('CheckoutCtrl', function (CategoriesSvc, $scope, ShoppingCa
       alert('Debes tener la ubicación activa en tu dispositivo. Ingresa a los ajustes de tu dispositivo.');
       console.log(err);
     }); //ends uiGmapGoogleMapApi
+
+    uiGmapIsReady.promise(1).then(function(instances){
+      cfpLoadingBar.complete();
+      console.log('checkoutMap runnning');
+      $('.Cart .gm-style').append('<div class="centerPin"></div>');
+    });
 
 
 
@@ -137,7 +148,6 @@ moduleapp.controller('CheckoutCtrl', function (CategoriesSvc, $scope, ShoppingCa
           OrdersSvc.createOrder($scope.order).then(function(result){
             console.log('Orden creada. Items de la orden: '+$scope.cartItems.length);
             for(var i=0; i<$scope.cartItems.length;i++){
-
               var orderItem = {
                 order_id: result.data,
                 product_id: $scope.cartItems[i].id,
@@ -151,6 +161,15 @@ moduleapp.controller('CheckoutCtrl', function (CategoriesSvc, $scope, ShoppingCa
               OrderItemSvc.create(orderItem).then(function(result){
                 console.log('item id : ', result.data);
               });
+
+              ProductsSvc.findById($scope.cartItems[i].id).then(function(result){
+                var item = result.data;
+                item.stock = parseInt(item.stock) - parseInt($scope.cartItems[i].quantity);
+                ProductsSvc.update(item, item.id).then(function(resultU){
+                    console.log('updated stock : ', resultU.data);
+                });
+              });
+
             }
               menu.setMainPage('app/view/cuenta.html');
           });
@@ -187,6 +206,13 @@ moduleapp.controller('CheckoutCtrl', function (CategoriesSvc, $scope, ShoppingCa
           return str;
         }
 
+
+
+  if($rootScope.userApp.tel == "" || $rootScope.userApp.tel == null){
+    ons.createDialog('editProfile.html').then(function(dialog){
+      dialog.show();
+    });
+}
 
 
 

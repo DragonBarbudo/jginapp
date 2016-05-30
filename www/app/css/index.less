@@ -613,8 +613,13 @@ body {
       margin: 20px auto;
       .box-sizing(border-box);
       border: 6px solid @dark;
-      img{ width: 100%; }
+      img{
+        min-width: 140px !important;
+        min-height: 140px !important;
+      }
       position: relative;z-index: 1;
+      background-size: cover;
+      background-position: center;
     }
     .profileName{
       color:@w;
@@ -703,7 +708,10 @@ body {
 
 .centerPin{
   position: absolute;
-  left: 50%; top: 50%; margin-left: -54px; margin-top: -67px;
+  left: 50%; top: 50%; margin-left: -90px; margin-top: -120px;
+  width: 180px; height: 120px;
+  background-image: url(../img/pin.png);
+  background-size: 100%;
 }
 
 .searchBar{
@@ -820,7 +828,7 @@ body {
      padding: 6px 20px;
   }
   h2{ color:@main; padding: 0; margin: 0; font-size: 1.1em; text-align: center;}
-  p{color:@w; margin: 0; padding: 5px 0; font-size: 0.8em; }
+  p{color:@w; margin: 0; padding: 5px 0; font-size: 0.8em; text-align: center;}
   ons-button{
     position: absolute;
     bottom: 0; left: 0;
@@ -854,9 +862,25 @@ body {
 
 
 .notesAboutZonaJagergin{
-  top: 114px;
-  .zona{ display: inline-block; width: 16px; height: 12px; background: fade(@sec, 70%); border:1px solid @main; margin-right: 5px; vertical-align: bottom; .border-radius(3px);}
+  bottom: 80px; left: 0;
+  right: auto; top: auto;
+  padding: 14px;
+  cursor:pointer;
+  border-left: 4px solid @main;
+    .border-radius(0 4px 4px 0);
+  .borderColorAnim;
+  .zona{ display: inline-block; margin-right: 6px;}
+  &:hover{
+    .gradient(@w*2, @w);
+  }
 }
+
+.checkoutMap{ position: relative;
+  .notesAboutZonaJagergin{
+    top: auto !important;
+  }
+}
+
 
 .Cart{
   .notesAboutIntroMap{ top:50px; }

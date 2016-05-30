@@ -39,7 +39,7 @@
   <ons-row ng-show="!grid" class="productsList">
     <ons-col>
       <ons-list>
-        <ons-list-item ng-repeat="prod in products | orderBy:'name'" class="product">
+        <ons-list-item ng-repeat="prod in products | orderBy:'name'" ng-if="prod.stock&gt;0" class="product">
           <ons-row>
             <ons-col width="70px">
               <div class="thumb"><img ng-src="http://jagergin.com/cms/api/imageFiles/{{prod.refId}}.jpg" alt=""/></div>
@@ -50,7 +50,7 @@
               <div class="price"><span class="qtyTxt">{{prod.quantity}}x  </span><span>{{prod.new_price * prod.quantity | currency}}</span></div>
             </ons-col>
             <ons-col ng-hide="InCart(prod.refId)" width="50px">
-              <select ng-change="prod.quantity=prod.quantitySelect" ng-model="prod.quantitySelect" ng-init="prod.quantitySelect=1" ng-options="ct for ct in cantidades" class="selectQty"></select>
+              <select ng-change="prod.quantity=prod.quantitySelect" ng-model="prod.quantitySelect" ng-init="prod.quantitySelect=1" ng-options="ct for ct in [] | range:1:prod.stock" class="selectQty"></select>
             </ons-col>
             <!--ons-col(ng-hide="InCart(prod.refId)", width="20px").tac
             ons-icon(icon="ion-android-add", ng-click="prod.quantity = (prod.quantity*1)+1").qtyButtons.listQty  
@@ -73,7 +73,7 @@
     </ons-col>
   </ons-row>
   <ons-row ng-show="grid" class="productsGrid">
-    <ons-col ng-repeat="prod in products | orderBy:'name'" width="46%" class="product">
+    <ons-col ng-repeat="prod in products | orderBy:'name'" width="46%" ng-if="prod.stock&gt;0" class="product">
       <ons-row>
         <div class="bigthumb"><img ng-src="http://jagergin.com/cms/api/imageFiles/{{prod.refId}}.jpg" alt=""/></div>
         <div class="name">{{ clean( prod.name ) }}</div>
@@ -89,7 +89,7 @@
           ons-icon(icon="ion-android-add", ng-click="prod.quantity = (prod.quantity*1)+1").qtyButtons
           -->
           <ons-col ng-hide="InCart(prod.refId)" width="50px">
-            <select ng-change="prod.quantity=prod.quantitySelect" ng-model="prod.quantitySelect" ng-init="prod.quantitySelect=1" ng-options="ct for ct in cantidades" class="selectQty selectQtyGrid"></select>
+            <select ng-change="prod.quantity=prod.quantitySelect" ng-model="prod.quantitySelect" ng-init="prod.quantitySelect=1" ng-options="ct for ct in [] | range:1:prod.stock" class="selectQty selectQtyGrid"></select>
           </ons-col>
           <ons-col>
             <div ng-hide="InCart(prod.refId)" class="cartBtn">

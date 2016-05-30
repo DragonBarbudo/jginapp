@@ -9,6 +9,7 @@ moduleapp.controller('PortadaCtrl', function($scope, CategoriesSvc, ShoppingCart
   $scope.isInZone = false;
   $scope.isInZone = "";
 
+  $scope.initposition = {};
 
   $scope.cartCount;
 
@@ -56,6 +57,9 @@ $scope.clean = function(str){
     return str;
   }
 
+$scope.returnToInit = function(){
+  $scope.map.control.refresh( {latitude: $scope.initposition.lat, longitude: $scope.initposition.lng} );
+}
 
 if(!$rootScope.zona){
   var nupaths = { path:[ ] };
@@ -63,14 +67,19 @@ if(!$rootScope.zona){
   var area = new google.maps.Polygon( {paths: nupaths.path });
   var posOptions = {timeout: 10000, enableHighAccuracy: true, maximumAge: 0};
   var geocoder = new google.maps.Geocoder();
+
   $cordovaGeolocation.getCurrentPosition(posOptions).then(function (data) {
+    $scope.initposition = {lat:data.coords.latitude, lng: data.coords.longitude };
     $scope.coords = { lat:data.coords.latitude, lng: data.coords.longitude };
     $scope.map.control.refresh( {latitude: $scope.coords.lat, longitude: $scope.coords.lng} );
     $scope.isInZone = area.containsLatLng(new google.maps.LatLng($scope.coords.lat, $scope.coords.lng));
   }); //ends geolocation
+
   uiGmapGoogleMapApi.then(function(maps) {
-    setTimeout(function(){ $('.zonaJagergin .gm-style').append('<div class="centerPin"><img src="app/img/icon_marker.png"></div>'); }, 2000);
+    //setTimeout(function(){ $('.zonaJagergin .gm-style').append('<div class="centerPin"><img src="app/img/icon_marker.png"></div>'); }, 2000);
+
     $scope.coords = { lat:19.3981294, lng: -99.1203205 };
+    $scope.initposition = $scope.coords;
       $scope.map = {
         control : {},
         center: { latitude: $scope.coords.lat, longitude: $scope.coords.lng },
@@ -95,9 +104,10 @@ if(!$rootScope.zona){
     console.log(err);
   }); //ends uiGmapGoogleMapApi
 
-    uiGmapIsReady.promise(1).then(function(instances){
-      cfpLoadingBar.complete();
-    });
+  uiGmapIsReady.promise(1).then(function(instances){
+    cfpLoadingBar.complete();
+    $('.zonaJagergin .gm-style').append('<div class="centerPin"></div>');
+  });
 } // ENDS inZone
 
 
@@ -125,7 +135,7 @@ moduleapp.directive('svgSnap', function(){
 
 
 
-moduleapp.controller('ProductosCtrl', function ($scope, ShoppingCartSvc, SettingSvc, StoreLocalSvc, ProductsSvc, $filter) {
+moduleapp.controller('ProductosCtrl', function ($scope, ShoppingCartSvc, SettingSvc, StoreLocalSvc, ProductsSvc, $filter, localStorageService) {
   $scope.navi = Navigator.getCurrentPage().options;
   $scope.categoryName = $scope.navi.nam;
   $scope.category = $scope.navi.cat;
@@ -150,7 +160,7 @@ moduleapp.controller('ProductosCtrl', function ($scope, ShoppingCartSvc, Setting
 
   $scope.addToCart = function(theItem){
     ShoppingCartSvc.addItem(theItem);
-    localStorageService.set('cart',ShoppingCartSvc.getCart());
+    localStorageService.set('cart', ShoppingCartSvc.getCart());
 
   }
 
@@ -310,6 +320,7 @@ $scope.$watch(function () {
   }, true);
 
 
+
   $scope.signup = function(){
     $scope.newUser = {};
     $scope.newUser.name = $scope.signin.name;
@@ -383,6 +394,7 @@ $scope.$watch(function () {
 
     });
     //Termina historial
+
 
   }
 
@@ -546,6 +558,8 @@ $scope.$watch(function () {
   $scope.actualizarPerfil = function(){
     UsersSvc.updateUser($scope.userEdit, $scope.userApp.id).then(function(result){
       console.log(result);
+      localStorageService.set('user', $rootScope.userApp);
+
     });
   }
 
@@ -564,10 +578,49 @@ $scope.$watch(function () {
     }
 
 
-});
+    console.log($rootScope.userApp.tel);
+    if($rootScope.userApp.tel == ""){
+
+    }
+
+}); //ends CuentaCtrl
 
 
 
 moduleapp.controller('AcercaCtrl', function ($scope) {
     $('.waves').parallax({ limitY: 30, scalarX: 20 });
 });
+
+
+
+
+moduleapp.filter('range', function() {
+  return function(input, min, max) {
+    max = max*1;
+    if(max==0){
+      return false;
+    } else {
+      min = parseInt(min); //Make string input int
+      max = parseInt(max)+1;
+      for (var i=min; i<max; i++)
+        input.push(i);
+      return input;
+    }
+  };
+});
+
+
+
+moduleapp.controller('EditProfileCheckout', function($scope, $rootScope, UsersSvc, localStorageService){
+
+  $scope.userEdit = $rootScope.userApp;
+
+  $scope.actualizarPerfil = function(){
+    UsersSvc.updateUser($scope.userEdit, $scope.userApp.id).then(function(result){
+      console.log(result);
+      localStorageService.set('user', $rootScope.userApp);
+
+    });
+  }
+
+})

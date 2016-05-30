@@ -13,19 +13,20 @@ ons-page(ng-controller="CheckoutCtrl").Cart
       ons-toolbar-button.payBtn
         ons-icon(icon="ion-bag")
         |  Pagar
-        
-  ons-row: ons-col.instrucciones Asigna el lugar donde será tu entrega. Recuerda que debe estar dentro de la zona JagerGin.
-  ons-row
-    ons-col
-      .notesAboutIntroMap
-        img(ng-src="app/img/icon_marker.png")
-        span(ng-show="isInZone") Estas en la zona JagerGin
-        span(ng-hide="isInZone", ng-class=" {'notIn':!isInZone} ") No estas en la zona JagerGin
-      //.notesAboutZonaJagergin
-        .zona
-        span Zona JagerGin
-      ui-gmap-google-map(control="map.control", center='map.center', zoom='map.zoom', events="map.events", options="map.options")
-        ui-gmap-polygon(static="true", ng-repeat="p in polygons track by p.id", path="p.path", stroke="p.stroke", visible="p.visible", geodesic="p.geodesic", fill="p.fill", fit="false")
+  
+  .checkoutMap
+    ons-row: ons-col.instrucciones Asigna el lugar donde será tu entrega. Recuerda que debe estar dentro de la zona JagerGin.
+    ons-row
+      ons-col
+        .notesAboutIntroMap
+          img(ng-src="app/img/icon_marker.png")
+          span(ng-show="isInZone") Estas en la zona JagerGin
+          span(ng-hide="isInZone", ng-class=" {'notIn':!isInZone} ") No estas en la zona JagerGin
+        .notesAboutZonaJagergin(ng-click="returnToInit()")
+          ons-icon.zona(icon="ion-location")
+          span Ir a mi ubicación
+        ui-gmap-google-map(control="map.control", center='map.center', zoom='map.zoom', events="map.events", options="map.options")
+          ui-gmap-polygon(static="true", ng-repeat="p in polygons track by p.id", path="p.path", stroke="p.stroke", visible="p.visible", geodesic="p.geodesic", fill="p.fill", fit="false")
       
       
   ons-row(ng-hide="isInZone"): ons-col.instrucciones.instruccionesBig Lamentablemente la ubicación de tu fiesta no se encuentra dentro de nuestra zona de entrega.
@@ -60,3 +61,17 @@ ons-page(ng-controller="CheckoutCtrl").Cart
         i.fa.fa-paypal 
         | Pagar
       ons-col
+
+
+  ons-template(id="editProfile.html")
+    ons-dialog(var="editProfileDialog", ng-controller="EditProfileCheckout")
+      ons-toolbar(inline)
+        .center Verifica tus datos
+      p Llena todos los campos para poder realizar tu pago.
+      hr
+      p: input(type="text", ng-model="userEdit.name", placeholder="Nombre").text-input
+      p: input(type="text", ng-model="userEdit.lastname", placeholder="Apellido").text-input
+      p: input(type="email", ng-model="userEdit.email", placeholder="Correo electrónico").text-input
+      p: input(type="text", ng-model="userEdit.tel", placeholder="Teléfono móvil").text-input
+      p
+        ons-button(modifier="", ng-if="userEdit.name && userEdit.lastname && userEdit.email && userEdit.tel", ng-click="actualizarPerfil(); editProfileDialog.hide()") Guardar

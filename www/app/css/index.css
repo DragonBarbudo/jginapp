@@ -5643,9 +5643,12 @@ body {
   border: 6px solid #2B3439;
   position: relative;
   z-index: 1;
+  background-size: cover;
+  background-position: center;
 }
 .profile .profileImage img {
-  width: 100%;
+  min-width: 140px !important;
+  min-height: 140px !important;
 }
 .profile .profileName {
   color: #f5f5f5;
@@ -5796,8 +5799,12 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
-  margin-left: -54px;
-  margin-top: -67px;
+  margin-left: -90px;
+  margin-top: -120px;
+  width: 180px;
+  height: 120px;
+  background-image: url(../img/pin.png);
+  background-size: 100%;
 }
 .searchBar {
   padding: 20px;
@@ -5968,6 +5975,7 @@ body {
   margin: 0;
   padding: 5px 0;
   font-size: 0.8em;
+  text-align: center;
 }
 .zonaJagergin ons-button {
   position: absolute;
@@ -6030,22 +6038,42 @@ body {
   border-bottom: 2px solid #DD062C;
 }
 .notesAboutZonaJagergin {
-  top: 114px;
-}
-.notesAboutZonaJagergin .zona {
-  display: inline-block;
-  width: 16px;
-  height: 12px;
-  background: rgba(221, 6, 44, 0.7);
-  border: 1px solid #2EB9FF;
-  margin-right: 5px;
-  vertical-align: bottom;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  bottom: 80px;
+  left: 0;
+  right: auto;
+  top: auto;
+  padding: 14px;
+  cursor: pointer;
+  border-left: 4px solid #2EB9FF;
+  -webkit-border-radius: 0 4px 4px 0;
+  -moz-border-radius: 0 4px 4px 0;
+  border-radius: 0 4px 4px 0;
   -moz-background-clip: padding-box;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
+  -webkit-animation-name: borderColorAnimation;
+  -webkit-animation-duration: 4s;
+  -webkit-transform-origin: 50% 50%;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}
+.notesAboutZonaJagergin .zona {
+  display: inline-block;
+  margin-right: 6px;
+}
+.notesAboutZonaJagergin:hover {
+  background: #ffffff;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #ffffff), color-stop(1, #f5f5f5));
+  background: -ms-linear-gradient(bottom, #ffffff, #f5f5f5);
+  background: -moz-linear-gradient(center bottom, #ffffff 0%, #f5f5f5 100%);
+  background: -o-linear-gradient(#f5f5f5, #ffffff);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#ffffff', GradientType=0);
+}
+.checkoutMap {
+  position: relative;
+}
+.checkoutMap .notesAboutZonaJagergin {
+  top: auto !important;
 }
 .Cart .notesAboutIntroMap {
   top: 50px;

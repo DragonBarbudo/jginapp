@@ -62,10 +62,9 @@
       <ons-row>
         <ons-col>
           <div class="notesAboutIntroMap"><img ng-src="app/img/icon_marker.png"/><span ng-show="isInZone">Estas en la zona JagerGin</span><span ng-hide="isInZone">No estas en la zona JagerGin</span></div>
-          <!--.notesAboutZonaJagergin
-          .zona
-          span Zona JagerGin
-          -->
+          <div ng-click="returnToInit()" class="notesAboutZonaJagergin">
+            <ons-icon icon="ion-location" class="zona"></ons-icon><span>Ir a mi ubicación</span>
+          </div>
           <ui-gmap-google-map control="map.control" options="map.options" center="map.center" zoom="map.zoom" events="map.events">
             <ui-gmap-polygon ng-repeat="p in polygons track by p.id" path="p.path" stroke="p.stroke" fill="p.fill"></ui-gmap-polygon>
             <ui-gmap-marker ng-repeat="m in marker track by m.id" coords="m.coords" options="m.options" idkey="m.id"></ui-gmap-marker>
