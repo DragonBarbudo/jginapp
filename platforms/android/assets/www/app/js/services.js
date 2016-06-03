@@ -23,8 +23,8 @@ moduleapp.factory("StoreLocalSvc", function(){
 
 			"viewsUrl" : "app/app-pages",
 
-			"payPalSandbox" : "AaNAb3q2ipAiLfJBiMcSTZ-cQWA_PvxhkmxhBqoZQ2z5Mys6qj9tB_euGd20tSRco2QfOkLkLVwO61Je",
-			"payPalProduction" : "AYqK95EuSPivywD5MmpASfTf-2nTMW9ExnunOde9jqQJWQo2UJH2WFOPcdb1tvz5lF_3-Z1Gq041adiB"
+			"payPalSandbox" : "AUxqVMZowyo0RVcziMQU5vTAT4otucvliQH0ur0RIqB0mNkx8n_KDCDdTxxnj1SIeu9_VuHc7Yphr9W_",
+			"payPalProduction" : "ATyaG-oUZ2v3W8Oopdlp5TOIQZWlSeaOxcnmZxfXr3qIzwiX9ByylQMSIHWVuZroSuXDHo4Wrtyo1KcU"
 		}
 		return setting;
 	}
@@ -370,7 +370,7 @@ moduleapp.factory("ShoppingCartSvc", function($window, $cookieStore){
 	     return config;
 	   }
 	   function onPayPalMobileInit() {
-	     PayPalMobile.prepareToRender("PayPalEnvironmentSandbox", configuration());
+	     PayPalMobile.prepareToRender("PayPalEnvironmentProduction", configuration());
 	   }
 	   function onUserCanceled(result) {
 	     console.log(result);

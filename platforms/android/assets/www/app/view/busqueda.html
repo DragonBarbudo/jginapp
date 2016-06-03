@@ -15,7 +15,7 @@
   <ons-row>
     <ons-col class="searchBar">
       <form ng-submit="buscarProducto()">
-        <input type="text" placeholder="Buscar producto" ng-model="search" class="text-input"/>
+        <input type="text" placeholder="Buscar producto o bebida" ng-model="search" class="text-input"/>
         <button class="button">
           <ons-icon icon="ion-search"></ons-icon>
         </button>
@@ -25,7 +25,7 @@
   <ons-row class="productsList">
     <ons-col>
       <ons-list>
-        <ons-list-item ng-repeat="prod in products | orderBy:'name'" ng-if="prod.stock&gt;0" class="product">
+        <ons-list-item ng-repeat="prod in products | orderBy:'name'" class="product">
           <ons-row>
             <ons-col width="70px">
               <div class="thumb"><img ng-src="http://jagergin.com/cms/api/imageFiles/{{prod.refId}}.jpg" alt=""/></div>
@@ -35,16 +35,19 @@
               <div class="description">{{prod.description}} | {{ prod.categoryName }}</div>
               <div class="price"> <span class="qtyTxt">{{prod.quantity}}x  </span><span>{{prod.new_price * prod.quantity | currency}}</span></div>
             </ons-col>
-            <ons-col ng-hide="InCart(prod.refId)" width="50px">
+            <ons-col ng-if="prod.stock&lt;=0" class="agotado">
+              <div>AGOTADO</div>
+            </ons-col>
+            <ons-col ng-hide="InCart(prod.refId)" width="50px" ng-if="prod.stock&gt;0">
               <div class="hide">{{prod.quantity =prod.quantity*1}}</div>
               <select ng-model="prod.quantity" ng-options="ct for ct in [] | range:1:prod.stock" class="selectQty"></select>
             </ons-col>
-            <ons-col width="70px" ng-hide="InCart(prod.refId)" class="cartBtn">
+            <ons-col width="70px" ng-hide="InCart(prod.refId)" ng-if="prod.stock&gt;0" class="cartBtn">
               <ons-button ng-click="addToCart(prod)">
                 <ons-icon icon="ion-ios-cart-outline"></ons-icon>
               </ons-button>
             </ons-col>
-            <ons-col width="70px" ng-show="InCart(prod.refId)" class="cartBtn">
+            <ons-col width="70px" ng-show="InCart(prod.refId)" ng-if="prod.stock&gt;0" class="cartBtn">
               <ons-button class="isInCart">
                 <ons-icon icon="ion-ios-checkmark-empty"></ons-icon>
               </ons-button>

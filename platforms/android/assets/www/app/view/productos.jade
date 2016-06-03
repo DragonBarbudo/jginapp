@@ -21,7 +21,7 @@ ons-page(ng-controller="ProductosCtrl")
   ons-row.productsList(ng-show="!grid")
     ons-col
       ons-list
-        ons-list-item(ng-repeat="prod in products | orderBy:'name'", ng-if="prod.stock>0").product
+        ons-list-item(ng-repeat="prod in products | orderBy:'name'").product
           ons-row
             ons-col(width="70px"): .thumb: img(ng-src="http://jagergin.com/cms/api/imageFiles/{{prod.refId}}.jpg", alt="")
             ons-col
@@ -31,8 +31,9 @@ ons-page(ng-controller="ProductosCtrl")
                 span.qtyTxt {{prod.quantity}}x  
                 span {{prod.new_price * prod.quantity | currency}}
             
+            ons-col(ng-if="prod.stock<=0").agotado: div AGOTADO
             
-            ons-col(ng-hide="InCart(prod.refId)", width="50px")
+            ons-col(ng-hide="InCart(prod.refId)", width="50px", ng-if="prod.stock>0")
               select(ng-change="prod.quantity=prod.quantitySelect", ng-model="prod.quantitySelect", ng-init="prod.quantitySelect=1", ng-options="ct for ct in [] | range:1:prod.stock").selectQty
 
 
@@ -40,11 +41,11 @@ ons-page(ng-controller="ProductosCtrl")
               ons-icon(icon="ion-android-add", ng-click="prod.quantity = (prod.quantity*1)+1").qtyButtons.listQty  
               ons-icon(icon="ion-android-remove", ng-show="prod.quantity>1" ng-click="prod.quantity = (prod.quantity*1)-1", ng-class="{'eliminate' : cartItems[$index].quantity == 1}").qtyButtons.listQty
               
-            ons-col(width="70px", ng-hide="InCart(prod.refId)").cartBtn: ons-button(ng-click="addToCart(prod)"): ons-icon(icon="ion-ios-cart-outline")
-            ons-col(width="70px", ng-show="InCart(prod.refId)").cartBtn: ons-button.isInCart: ons-icon(icon="ion-ios-checkmark-empty")
+            ons-col(width="70px", ng-hide="InCart(prod.refId)", ng-if="prod.stock>0").cartBtn: ons-button(ng-click="addToCart(prod)"): ons-icon(icon="ion-ios-cart-outline")
+            ons-col(width="70px", ng-show="InCart(prod.refId)", ng-if="prod.stock>0").cartBtn: ons-button.isInCart: ons-icon(icon="ion-ios-checkmark-empty")
 
   ons-row.productsGrid(ng-show="grid")
-    ons-col(ng-repeat="prod in products | orderBy:'name'", width="46%", ng-if="prod.stock>0").product
+    ons-col(ng-repeat="prod in products | orderBy:'name'", width="46%").product
       ons-row
         .bigthumb: img(ng-src="http://jagergin.com/cms/api/imageFiles/{{prod.refId}}.jpg", alt="")
         .name {{ clean( prod.name ) }}
@@ -53,13 +54,15 @@ ons-page(ng-controller="ProductosCtrl")
           ons-col.tar
             span.qtyTxt {{prod.quantity}}x  
             span.price {{prod.new_price * prod.quantity | currency}}
-        ons-row
-          //ons-col(ng-hide="InCart(prod.refId)").tac
+            
+        ons-row(ng-if="prod.stock<=0").agotado: ons-col: div AGOTADO
+        
+        ons-row(ng-if="prod.stock>0")
             ons-icon(icon="ion-android-remove", ng-show="prod.quantity>1" ng-click="prod.quantity = (prod.quantity*1)-1", ng-class="{'eliminate' : cartItems[$index].quantity == 1}").qtyButtons
             ons-icon(icon="ion-android-add", ng-click="prod.quantity = (prod.quantity*1)+1").qtyButtons
-          ons-col(ng-hide="InCart(prod.refId)", width="50px")
+          ons-col(ng-hide="InCart(prod.refId)", width="50px", ng-if="prod.stock>0")
             select(ng-change="prod.quantity=prod.quantitySelect", ng-model="prod.quantitySelect", ng-init="prod.quantitySelect=1", ng-options="ct for ct in [] | range:1:prod.stock").selectQty.selectQtyGrid
-          ons-col
+          ons-col(ng-if="prod.stock>0")
             .cartBtn(ng-hide="InCart(prod.refId)"): ons-button(ng-click="addToCart(prod)"): ons-icon(icon="ion-ios-cart-outline")
             .cartBtn(ng-show="InCart(prod.refId)"): ons-button.isInCart: ons-icon(icon="ion-ios-checkmark-empty")
 
