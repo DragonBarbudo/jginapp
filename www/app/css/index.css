@@ -6195,3 +6195,16 @@ body {
   background: #DD062C;
   margin-top: 10px;
 }
+.agotado div {
+  color: #A3A3A3;
+  padding: 4px;
+  border: 1px solid #A3A3A3;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -moz-background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  margin: 6px 0;
+  text-align: center;
+}

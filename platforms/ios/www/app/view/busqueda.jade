@@ -9,14 +9,14 @@ ons-page(ng-controller="BusquedaCtrl")
   ons-row
     ons-col.searchBar
       form(ng-submit="buscarProducto()")
-        input(type="text", placeholder="Buscar producto", ng-model="search").text-input
+        input(type="text", placeholder="Buscar producto o bebida", ng-model="search").text-input
         button.button: ons-icon(icon="ion-search")
       
 
   ons-row.productsList
     ons-col
       ons-list
-        ons-list-item(ng-repeat="prod in products | orderBy:'name'",  ng-if="prod.stock>0").product
+        ons-list-item(ng-repeat="prod in products | orderBy:'name'").product
           ons-row
             ons-col(width="70px"): .thumb: img(ng-src="http://jagergin.com/cms/api/imageFiles/{{prod.refId}}.jpg", alt="")
             ons-col
@@ -25,10 +25,10 @@ ons-page(ng-controller="BusquedaCtrl")
               .price 
                 span.qtyTxt {{prod.quantity}}x  
                 span {{prod.new_price * prod.quantity | currency}}
-            
-            ons-col(ng-hide="InCart(prod.refId)", width="50px")
+            ons-col(ng-if="prod.stock<=0").agotado: div AGOTADO
+            ons-col(ng-hide="InCart(prod.refId)", width="50px", ng-if="prod.stock>0")
               .hide {{prod.quantity =prod.quantity*1}}
               select(ng-model="prod.quantity", ng-options="ct for ct in [] | range:1:prod.stock").selectQty
-            ons-col(width="70px", ng-hide="InCart(prod.refId)").cartBtn: ons-button(ng-click="addToCart(prod)"): ons-icon(icon="ion-ios-cart-outline")
-            ons-col(width="70px", ng-show="InCart(prod.refId)").cartBtn: ons-button.isInCart: ons-icon(icon="ion-ios-checkmark-empty")
+            ons-col(width="70px", ng-hide="InCart(prod.refId)", ng-if="prod.stock>0").cartBtn: ons-button(ng-click="addToCart(prod)"): ons-icon(icon="ion-ios-cart-outline")
+            ons-col(width="70px", ng-show="InCart(prod.refId)", ng-if="prod.stock>0").cartBtn: ons-button.isInCart: ons-icon(icon="ion-ios-checkmark-empty")
           

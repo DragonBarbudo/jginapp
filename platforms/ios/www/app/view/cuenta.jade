@@ -93,7 +93,7 @@ ons-navigator(var="Navigator")
                     ons-row
                       .detalles
                         div(ng-repeat="itm in orden.items ")
-                          span {{itm.product_name}} 
+                          span {{ clean(itm.product_name) }}
                           span | x{{itm.product_quantity}}
                         
                     ons-row

@@ -20,35 +20,6 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/app\/css\/index.css": {
-		"fileType": 16,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/app\/css\/index.css",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/app\/css\/index.less": {
-		"allowInsecureImports": 0,
-		"createSourceMap": 0,
-		"disableJavascript": 0,
-		"fileType": 1,
-		"ieCompatibility": 1,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/app\/css\/index.less",
-		"outputAbbreviatedPath": "\/app\/css\/index.css",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
-		"relativeURLS": 0,
-		"shouldRunAutoprefixer": 0,
-		"shouldRunBless": 0,
-		"strictImports": 0,
-		"strictMath": 0,
-		"strictUnits": 0
-		},
 	"\/app\/css\/ionicons\/css\/ionicons.css": {
 		"fileType": 16,
 		"ignore": 0,
@@ -537,17 +508,6 @@
 		"outputStyle": 0,
 		"syntaxCheckerStyle": 0
 		},
-	"\/app\/js\/controllers.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/app\/js\/controllers.js",
-		"outputAbbreviatedPath": "\/app\/js\/min\/controllers-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
-		"syntaxCheckerStyle": 0
-		},
 	"\/app\/js\/controllers\/CarritoCtrl.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -900,17 +860,6 @@
 		"outputStyle": 0,
 		"syntaxCheckerStyle": 0
 		},
-	"\/app\/js\/services.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/app\/js\/services.js",
-		"outputAbbreviatedPath": "\/app\/js\/min\/services-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
-		"syntaxCheckerStyle": 0
-		},
 	"\/app\/js\/zonaJagergin.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -958,17 +907,6 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/app\/view\/aviso.jade",
 		"outputAbbreviatedPath": "\/app\/view\/aviso.html",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 0
-		},
-	"\/app\/view\/busqueda.jade": {
-		"compileDebug": 1,
-		"fileType": 512,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/app\/view\/busqueda.jade",
-		"outputAbbreviatedPath": "\/app\/view\/busqueda.html",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0
@@ -1021,17 +959,6 @@
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
-		},
-	"\/app\/view\/cuenta.jade": {
-		"compileDebug": 1,
-		"fileType": 512,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/app\/view\/cuenta.jade",
-		"outputAbbreviatedPath": "\/app\/view\/cuenta.html",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 0
 		},
 	"\/app\/view\/gracias-por-compra.html": {
 		"fileType": 8192,
@@ -1129,26 +1056,6 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/app\/view\/portada_subcategorias.jade",
 		"outputAbbreviatedPath": "\/app\/view\/portada_subcategorias.html",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 0
-		},
-	"\/app\/view\/productos.html": {
-		"fileType": 8192,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/app\/view\/productos.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/app\/view\/productos.jade": {
-		"compileDebug": 1,
-		"fileType": 512,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/app\/view\/productos.jade",
-		"outputAbbreviatedPath": "\/app\/view\/productos.html",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0

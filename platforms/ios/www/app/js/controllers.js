@@ -577,9 +577,9 @@ $scope.$watch(function () {
     }
 
 
-    console.log($rootScope.userApp.tel);
-    if($rootScope.userApp.tel == ""){
-
+    $scope.clean = function(str){
+      str = str.replace( /\[(.+?)\]/g , '' );
+      return str;
     }
 
 }); //ends CuentaCtrl
