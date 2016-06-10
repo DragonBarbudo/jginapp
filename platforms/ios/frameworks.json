@@ -17,10 +17,5 @@
     "libPayPalMobile.a": 1,
     "libCardIO.a": 1,
     "libopencv_core.a": 1,
-    "libopencv_imgproc.a": 1,
-    "AddressBook.framework": 1,
-    "CoreText.framework": 1,
-    "StoreKit.framework": 1,
-    "libz.tbd": 1,
-    "libz.dylib": 1
+    "libopencv_imgproc.a": 1
 }

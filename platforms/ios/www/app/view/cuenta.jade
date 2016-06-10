@@ -107,7 +107,7 @@ ons-navigator(var="Navigator")
     ons-dialog(var="editProfileDialog", ng-controller="CuentaCtrl")
       ons-toolbar(inline)
         .center Edita tu perfil
-      div(ng-if="userApp.network==''")
+      div(ng-if="userApp.network!='facebook' && userApp.network!='google'") 
         input(name="imgprofile", id="imgprofile", type="file", onchange="angular.element(this).scope().uploadImage(this.files)").profileImageInput
         label(for="imgprofile").button
           ons-icon(icon="ion-upload")

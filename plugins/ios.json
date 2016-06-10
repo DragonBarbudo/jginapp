@@ -8,16 +8,10 @@
     },
     "installed_plugins": {
         "com.paypal.cordova.mobilesdk": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "com.jagergin.app"
         },
         "cordova-plugin-geolocation": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
-        },
-        "cordova-plugin-inappbrowser": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
-        },
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "com.jagergin.app"
         }
     },
     "dependent_plugins": {}
