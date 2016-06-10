@@ -140,7 +140,7 @@
       <ons-toolbar inline="inline">
         <div class="center">Edita tu perfil</div>
       </ons-toolbar>
-      <div ng-if="userApp.network==''">
+      <div ng-if="userApp.network!='facebook' &amp;&amp; userApp.network!='google'"> 
         <input name="imgprofile" id="imgprofile" type="file" onchange="angular.element(this).scope().uploadImage(this.files)" class="profileImageInput"/>
         <label for="imgprofile" class="button">
           <ons-icon icon="ion-upload"></ons-icon> Imagen de perfil
