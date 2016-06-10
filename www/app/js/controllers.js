@@ -52,14 +52,17 @@ moduleapp.controller('PortadaCtrl', function($scope, CategoriesSvc, ShoppingCart
 
 
 
-$scope.clean = function(str){
-    str = str.replace( /\[(.+?)\]/g , '' );
-    return str;
-  }
+  $scope.clean = function(str){
+      str = str.replace( /\[(.+?)\]/g , '' );
+      return str;
+    }
 
-$scope.returnToInit = function(){
-  $scope.map.control.refresh( {latitude: $scope.initposition.lat, longitude: $scope.initposition.lng} );
-}
+
+  $scope.returnToInit = function(){
+    $scope.map.control.refresh( {latitude: $scope.initposition.lat, longitude: $scope.initposition.lng} );
+    var point = new google.maps.LatLng($scope.initposition.lat, $scope.initposition.lng);
+    $scope.isInZone = area.containsLatLng(point);
+  }
 
 if(!$rootScope.zona){
   var nupaths = { path:[ ] };
@@ -463,6 +466,23 @@ $scope.$watch(function () {
         console.log('Client ID Exists. Signing In');
         $rootScope.userApp = resultC.data;
         $rootScope.loggedin = true;
+
+        /* PICTURES */
+        var picture = r.picture;
+        if(network == 'facebook'){ picture = picture+"&width=300";  }
+        if(network == 'google'){ picture = picture+"?sz=300"; }
+
+        UsersSvc.remoteImage(picture, $rootScope.userApp.id).then(function(imageResult){
+          console.log(imageResult);
+          $rootScope.loggedin = true;
+          if($scope.regreso){$state.go('carrito');}
+          $scope.reloadparam = Math.random();
+          localStorageService.set('user', $rootScope.userApp);
+          cargarHistorial();
+          loginRetorno();
+        });
+        /* PICTURES */
+
         cargarHistorial();
         loginRetorno();
         localStorageService.set('user', $rootScope.userApp);
@@ -501,7 +521,7 @@ $scope.$watch(function () {
               if(result.data){
                 $rootScope.userApp = $scope.newUser;
                 $rootScope.userApp.id = result.data;
-
+                /* PICTURES */
                 var picture = r.picture;
                 if(network == 'facebook'){ picture = picture+"&width=300";  }
                 if(network == 'google'){ picture = picture+"?sz=300"; }
@@ -514,10 +534,8 @@ $scope.$watch(function () {
                   localStorageService.set('user', $rootScope.userApp);
                   cargarHistorial();
                   loginRetorno();
-
-
                 });
-
+                /* PICTURES */
 
 
               }

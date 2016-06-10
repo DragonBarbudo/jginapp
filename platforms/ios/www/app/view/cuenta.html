@@ -107,7 +107,7 @@
                   </ons-row>
                   <ons-row>
                     <div class="detalles">
-                      <div ng-repeat="itm in orden.items "><span>{{itm.product_name}} </span><span>| x{{itm.product_quantity}}</span></div>
+                      <div ng-repeat="itm in orden.items "><span>{{ clean(itm.product_name) }}</span><span>| x{{itm.product_quantity}}</span></div>
                     </div>
                   </ons-row>
                   <ons-row>
@@ -140,11 +140,13 @@
       <ons-toolbar inline="inline">
         <div class="center">Edita tu perfil</div>
       </ons-toolbar>
-      <input name="imgprofile" id="imgprofile" type="file" onchange="angular.element(this).scope().uploadImage(this.files)" class="profileImageInput"/>
-      <label for="imgprofile" class="button">
-        <ons-icon icon="ion-upload"></ons-icon> Imagen de perfil
-      </label>
-      <hr/>
+      <div ng-if="userApp.network==''">
+        <input name="imgprofile" id="imgprofile" type="file" onchange="angular.element(this).scope().uploadImage(this.files)" class="profileImageInput"/>
+        <label for="imgprofile" class="button">
+          <ons-icon icon="ion-upload"></ons-icon> Imagen de perfil
+        </label>
+        <hr/>
+      </div>
       <p>
         <input type="text" ng-model="userEdit.name" placeholder="Nombre" class="text-input"/>
       </p>

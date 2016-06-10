@@ -621,12 +621,13 @@ moduleapp.factory("UtilsSvc", function(StoreLocalSvc){
 		function createRandomCode()
 		{
 		    var text = "";
-		    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+		    var possible = "0123456789";
 
-		    for( var i=0; i < 5; i++ )
+		    for( var i=0; i < 3; i++ )
 		        text += possible.charAt(Math.floor(Math.random() * possible.length));
 
-		    return text;
+				var datecode = moment().format('YYMMDD');
+		    return datecode+text;
 		}
 		function formatDate(date, format, utc) {
 		    var MMMM = ["\x00", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];

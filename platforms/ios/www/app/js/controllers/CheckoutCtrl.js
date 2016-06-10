@@ -52,6 +52,8 @@ moduleapp.controller('CheckoutCtrl', function (CategoriesSvc, $scope, ShoppingCa
 
     $scope.returnToInit = function(){
       $scope.map.control.refresh( {latitude: $scope.initposition.lat, longitude: $scope.initposition.lng} );
+      var point = new google.maps.LatLng($scope.initposition.lat, $scope.initposition.lng);
+      $scope.isInZone = area.containsLatLng(point);
     }
 
     $scope.checkoutPosition;
