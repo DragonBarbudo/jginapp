@@ -107,11 +107,12 @@ ons-navigator(var="Navigator")
     ons-dialog(var="editProfileDialog", ng-controller="CuentaCtrl")
       ons-toolbar(inline)
         .center Edita tu perfil
-      input(name="imgprofile", id="imgprofile", type="file", onchange="angular.element(this).scope().uploadImage(this.files)").profileImageInput
-      label(for="imgprofile").button
-        ons-icon(icon="ion-upload")
-        |  Imagen de perfil
-      hr
+      div(ng-if="userApp.network==''")
+        input(name="imgprofile", id="imgprofile", type="file", onchange="angular.element(this).scope().uploadImage(this.files)").profileImageInput
+        label(for="imgprofile").button
+          ons-icon(icon="ion-upload")
+          |  Imagen de perfil
+        hr
       p: input(type="text", ng-model="userEdit.name", placeholder="Nombre").text-input
       p: input(type="text", ng-model="userEdit.lastname", placeholder="Apellido").text-input
       p: input(type="email", ng-model="userEdit.email", placeholder="Correo electrónico").text-input

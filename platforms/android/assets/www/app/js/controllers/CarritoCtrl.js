@@ -1,4 +1,4 @@
-moduleapp.controller('CarritoCtrl', function ($scope, ShoppingCartSvc, SettingSvc, StoreLocalSvc, ProductsSvc, PaypalSvc, geolocation, UtilsSvc, $rootScope) {
+moduleapp.controller('CarritoCtrl', function ($scope, ShoppingCartSvc, SettingSvc, StoreLocalSvc, ProductsSvc, PaypalSvc, geolocation, UtilsSvc, $rootScope, localStorageService) {
 
 
     $rootScope.retorno = false;
@@ -61,13 +61,15 @@ moduleapp.controller('CarritoCtrl', function ($scope, ShoppingCartSvc, SettingSv
         $scope[itemindx].next();
       }
     }
-    $scope.setQty = function(item, qty, itemindx){
+    $scope.setQty = function(item, qty){
       ShoppingCartSvc.setQuantity(item, qty);
       item.subTotal = item.quantity * item.new_price;
       updateCart();
+      /*
       if(qty == 0){
         $scope[itemindx].next();
       }
+      */
     }
 
     $scope.deleteFirst = function(itemindx){
